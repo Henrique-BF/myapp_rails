@@ -1,0 +1,13 @@
+<h1>Articles#edit</h1>
+
+<%
+=begin%>
+ <%= @article.errors.full_messages %>
+ <% @article.errors.full_messages_for(:field_name).each do |message| %>
+  <div> <%= message %> </div>
+ <% end %>
+<%
+=end%>
+<%= flash[:errors] %>
+
+<%= render "form", article: @article %>
