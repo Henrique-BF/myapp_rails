@@ -4,4 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable
+
+  def adm?
+    role == "adm"
+  end
+
+  def super_adm?
+    role == "super_adm"
+  end
 end
