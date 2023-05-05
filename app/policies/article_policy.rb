@@ -8,11 +8,12 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def create?
-    user.adm? || user.super_adm?
+    true
   end
 
   def update?
-    user.adm? || user.super_adm?
+    return user.id == record.user_id if user.customer? && !user.subscribed?
+    true
   end
 
   def destroy?

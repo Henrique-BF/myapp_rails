@@ -4,10 +4,10 @@
 <p><%= @article.body %></p>
 
 <ul>
-  <% if policy(:article).edit? %>
+  <% if policy(@article).edit? %>
     <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <% end %>
-  <% if policy(:article).destroy? %>
+  <% if policy(@article).destroy? %>
     <li>
       <%= link_to "Destroy", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     </li>

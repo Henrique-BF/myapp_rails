@@ -5,6 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable
 
+  has_many :articles
+
+  def subscribed?
+    subscribed_at != nil
+  end
+
+  def customer?
+    role == "customer"
+  end
+
   def adm?
     role == "adm"
   end
