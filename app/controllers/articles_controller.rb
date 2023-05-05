@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  # skip_before_action :authenticate_user!, only: :index
+
   def index
     @articles = Article.all
   end
@@ -17,7 +19,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_path, notice: "Created!"
     else
-      flash[:errors] = @article.errors.full_messages
+      flash[:alert] = @article.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,7 +34,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article, notice: "Updated!"
     else
-      flash[:errors] = @article.errors.full_messages
+      flash[:alert] = @article.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
