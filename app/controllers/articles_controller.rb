@@ -53,7 +53,6 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to @article, notice: "Deleted!"
-    # redirect_to articles_path, status: :see_other
   end
 
   private

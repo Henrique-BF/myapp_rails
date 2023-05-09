@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   belongs_to :user, optional: true
 
   validates :title, presence: true
-  validate :body_max_chars
+  validate :check_body_max_length
 
   MAX_ADM_BODY_LENGTH = 100
   MAX_SUBSCRIBED_USER_BODY_LENGTH = 20
@@ -12,9 +12,9 @@ class Article < ApplicationRecord
   private
 
   def check_body_max_length
-    return if body.blank? || body.length <= max_body_length
+    return if body.blank? || body.length <= body_max_length
 
-    errors.add :body, "Body max length is #{max_body_length}"
+    errors.add :body, "Body max length is #{body_max_length}"
   end
 
   def body_max_length
